@@ -1,0 +1,25 @@
+
+.navbar {
+  background-color: black;
+  display: flex;
+  align-content: space-between;
+  justify-content: space-between;
+  inset: 0;
+  width: 100%;
+
+  &__page-title, &__back-to-menu {
+    font: 40px Inconsolata, monospace;
+    color: #39ff14;
+    text-shadow: 0 0 5px #C8C8C8;
+  }
+
+  &__page-title {
+    padding-left: 50px;
+  }
+
+  &__back-to-menu {
+    cursor: pointer;
+    padding-right: 50px;
+  }
+
+}

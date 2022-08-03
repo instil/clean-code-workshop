@@ -1,10 +1,11 @@
 import {FC} from "react";
-
+import "./CalculatorExercise.scss";
+import Navbar from "../../structure/navbar/Navbar";
 
 const CalculatorExercise: FC = () => {
     return (
         <>
-        Calculator page
+            <Navbar pageTitle="Calculator Exercise"/>
         </>
     );
 };

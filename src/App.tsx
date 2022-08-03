@@ -8,5 +8,4 @@ const App: FC = () => (
     </Router>
 );
 
-
 export default App;

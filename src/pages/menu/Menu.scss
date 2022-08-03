@@ -1,0 +1,45 @@
+.menu {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  inset: 0;
+
+  padding-left: 50px;
+
+  &__title {
+    font: 40px Inconsolata, monospace;
+    color: #39ff14;
+    text-shadow: 0 0 5px #C8C8C8;
+  }
+
+  &__exercises {
+    padding-left: 50px;
+    font: 30px Inconsolata, monospace;
+    color: #39ff14;
+    text-shadow: 0 0 5px #C8C8C8;
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .typing-carot {
+    width: 5px;
+    height: 30px;
+    background-color: #39ff14;
+    animation: blinking 1s infinite;
+    align-content: start;
+  }
+
+  @keyframes blinking {
+    0% {
+      background-color: transparent;
+    }
+    49% {
+      background-color: transparent
+    }
+    50% {
+      background-color: #39ff14;
+    }
+  }
+}
