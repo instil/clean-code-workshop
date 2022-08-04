@@ -1,7 +1,9 @@
 import {FC} from "react";
 import {useHistory} from "react-router-dom";
-import {CALCULATOR_EXERCISE, SINGLE_RESPONSIBILITY_EXERCISE} from "../../router/models/Routes";
+import {CALCULATOR_EXERCISE, PALINDROME_EXERCISE, SINGLE_RESPONSIBILITY_EXERCISE} from "../../router/models/Routes";
 import "./Menu.scss";
+import TypingCarot from "../../structure/typing-carot/TypingCarot";
+import InstilLogo from "../../structure/ascii-art/InstilLogo";
 
 const Menu: FC = () => {
     const history = useHistory();
@@ -14,10 +16,13 @@ const Menu: FC = () => {
             <h1 className="menu__title">Exercise Menu</h1>
             <ol className="menu__exercises">
                 <li onClick={() => goToUrl(CALCULATOR_EXERCISE)}>Calculator Exercise</li>
+                <li onClick={() => goToUrl(PALINDROME_EXERCISE)}>Palindrome Exercise</li>
                 <li onClick={() => goToUrl(SINGLE_RESPONSIBILITY_EXERCISE)}>Single Responsibility Exercise</li>
-                <li>Some exercise</li>
+                <li>Gilded Rose</li>
+                <li>Dependency Injection</li>
             </ol>
-            <div className="typing-carot"/>
+            <TypingCarot/>
+            <InstilLogo/>
         </div>
     )
 }

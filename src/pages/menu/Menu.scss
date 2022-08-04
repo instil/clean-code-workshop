@@ -22,23 +22,11 @@
     }
   }
 
-  .typing-carot {
-    width: 5px;
-    height: 30px;
-    background-color: #39ff14;
-    animation: blinking 1s infinite;
-    align-content: start;
-  }
-
-  @keyframes blinking {
-    0% {
-      background-color: transparent;
-    }
-    49% {
-      background-color: transparent
-    }
-    50% {
-      background-color: #39ff14;
-    }
+  .instil-logo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding-right: 50px;
+    padding-bottom: 50px
   }
 }

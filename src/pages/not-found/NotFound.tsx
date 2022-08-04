@@ -1,6 +1,5 @@
 import {FC} from "react";
 import "./NotFound.scss";
-import {CALCULATOR_EXERCISE} from "../../router/models/Routes";
 import {useHistory} from "react-router-dom";
 const image = require("../../assets/didnt-say-the-magic-word.gif");
 

@@ -4,6 +4,7 @@
   height: 100%;
   inset: 0;
   padding-left: 50px;
+  padding-right: 50px;
   font: 40px Inconsolata, monospace;
 
   &__title, &__sub-title, &__results, &__description {
@@ -12,11 +13,21 @@
   }
 
   &__title {
-    margin-top: 150px;
+    margin-top: 70px;
   }
-
 
   &__results, &__description {
     font: 30px Inconsolata, monospace;
+  }
+
+  &__movie-posters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+     img {
+       width: 190px;
+       height: 300px;
+       margin: 0 40px;
+     }
   }
 }
