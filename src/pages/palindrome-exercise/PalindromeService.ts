@@ -6,7 +6,7 @@ const data = [
     "Rats live on no evil star",
     "There is no abstract living",
     "Some men interpret nine memos",
-    "Gnorts Mr Alien"
+    "Gnorts, Mr Alien"
 ];
 
 const isAPalindrome = (phrase: string): string => `${phrase}  - is a palindrome\n`;

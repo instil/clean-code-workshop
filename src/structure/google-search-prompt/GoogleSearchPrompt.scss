@@ -1,0 +1,14 @@
+.text-input {
+  caret-color: rgb(0, 200, 0);
+  caret-shape: block;
+  width: 100%;
+
+  font: 30px Inconsolata, monospace;
+  color: #39ff14;
+  background-color: black;
+  border-color: black;
+}
+
+.text-input:focus {
+  outline: 0;
+}

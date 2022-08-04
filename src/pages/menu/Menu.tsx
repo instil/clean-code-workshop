@@ -2,8 +2,8 @@ import {FC} from "react";
 import {useHistory} from "react-router-dom";
 import {CALCULATOR_EXERCISE, PALINDROME_EXERCISE, SINGLE_RESPONSIBILITY_EXERCISE} from "../../router/models/Routes";
 import "./Menu.scss";
-import TypingCarot from "../../structure/typing-carot/TypingCarot";
 import InstilLogo from "../../structure/ascii-art/InstilLogo";
+import GoogleSearchPrompt from "../../structure/google-search-prompt/GoogleSearchPrompt";
 
 const Menu: FC = () => {
     const history = useHistory();
@@ -21,7 +21,8 @@ const Menu: FC = () => {
                 <li>Gilded Rose</li>
                 <li>Dependency Injection</li>
             </ol>
-            <TypingCarot/>
+            {/*<TypingCarot/>*/}
+            <GoogleSearchPrompt/>
             <InstilLogo/>
         </div>
     )

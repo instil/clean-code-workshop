@@ -4,19 +4,26 @@
   inset: 0;
   padding-left: 50px;
   padding-right: 50px;
-  font: 40px Inconsolata, monospace;
-
-  padding-left: 50px;
-
   color: #39ff14;
   text-shadow: 0 0 5px #C8C8C8;
 
-  &__title {
-    margin-top: 70px;
+  &__task {
+    &__title {
+      margin-top: 70px;
+      font: 40px Inconsolata, monospace;
+    }
+
+    &__description {
+      font: 30px Inconsolata, monospace;
+    }
+
+    .palindrome-icon {
+      text-align: center;
+    }
   }
 
-  .palindrome-icon {
-    text-align: center;
+  &__sub-title {
+    font: 40px Inconsolata, monospace;
   }
 
   &__results, &__description {
