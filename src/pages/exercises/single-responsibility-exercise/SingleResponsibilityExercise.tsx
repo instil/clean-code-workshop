@@ -1,14 +1,14 @@
 import {FC} from "react";
-import Navbar from "../../structure/navbar/Navbar";
+import Navbar from "../../../structure/navbar/Navbar";
 import "./SingleResponsibilityExercise.scss";
-import TypingCarot from "../../structure/typing-carot/TypingCarot";
+import TypingCarot from "../../../structure/typing-carot/TypingCarot";
 
-const commando = require("../../assets/commando.png");
-const conan = require("../../assets/conan-the-barbarian.png");
-const predator = require("../../assets/predator.png");
-const terminator1 = require("../../assets/terminator1.png");
-const terminator2 = require("../../assets/terminator2.png");
-const totalRecall = require("../../assets/total-recall.png");
+const commando = require("../../../assets/commando.png");
+const conan = require("../../../assets/conan-the-barbarian.png");
+const predator = require("../../../assets/predator.png");
+const terminator1 = require("../../../assets/terminator1.png");
+const terminator2 = require("../../../assets/terminator2.png");
+const totalRecall = require("../../../assets/total-recall.png");
 
 const SingleResponsibilityExercise: FC = () => {
     class Movie {
@@ -75,7 +75,6 @@ const SingleResponsibilityExercise: FC = () => {
         <>
             <Navbar pageTitle="Single Responsibility Exercise"/>
             <div className="single-responsibility-exercise">
-                {/*add carousel to display images*/}
                 <div className="single-responsibility-exercise__task">
                     <h3 className="single-responsibility-exercise__title">Task:</h3>
                     <p className="single-responsibility-exercise__description">A crazed Arnold Schwarzenegger fan

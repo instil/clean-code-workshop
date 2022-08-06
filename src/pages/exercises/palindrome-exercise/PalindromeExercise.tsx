@@ -1,6 +1,6 @@
 import {FC} from "react";
-import Navbar from "../../structure/navbar/Navbar";
-import TypingCarot from "../../structure/typing-carot/TypingCarot";
+import Navbar from "../../../structure/navbar/Navbar";
+import TypingCarot from "../../../structure/typing-carot/TypingCarot";
 import "./PalindromeExercise.scss";
 import {solution} from "./PalindromeService";
 import PalindromeIcon from "./PalindromeIcon";
