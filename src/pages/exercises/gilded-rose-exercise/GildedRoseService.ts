@@ -73,7 +73,7 @@ export class GildedRose {
         this.items = items;
     }
 
-    updateQuality() :Item[]  {
+    updateQuality(): Item[]  {
         this.items.forEach(currentItem => {
 
             switch (currentItem.name) {
