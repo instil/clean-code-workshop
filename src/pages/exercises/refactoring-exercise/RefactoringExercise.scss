@@ -5,11 +5,14 @@
   inset: 0;
   padding-left: 50px;
   padding-right: 50px;
-  font: 40px Inconsolata, monospace;
 
   &__title, &__sub-title, &__results, &__description {
     color: #39ff14;
     text-shadow: 0 0 5px #C8C8C8;
+  }
+
+  &__title, &__sub-title {
+    font: 45px Inconsolata, monospace;
   }
 
   &__title {
@@ -19,6 +22,18 @@
   &__results, &__description {
     font: 30px Inconsolata, monospace;
     white-space: pre-line;
+  }
+
+  &__description {
+    .moms-spaghetti {
+      cursor: pointer;
+    }
+    .moms-spaghetti {
+      cursor: pointer;
+    }
+    .moms-spaghetti:hover {
+      color: #ade8a2;
+    }
   }
 
   &__movie-posters {

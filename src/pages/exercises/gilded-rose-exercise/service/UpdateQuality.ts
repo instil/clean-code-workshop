@@ -35,20 +35,20 @@ const increaseQualityForConcert = (item: Item): number => {
     return quality
 }
 
-export const updateQualityForConcert = (item :Item) => {
+export const updateQualityForConcert = (item: Item) => {
     item.quality = item.sellIn === 0 ? 0 : increaseQualityForConcert(item);
     item.sellIn -= 1
 
     return item;
 }
 
-export const updateQualityForSulfuras = (item:Item) => {
+export const updateQualityForSulfuras = (item: Item) => {
     item.quality = 80;
 
     return item
 }
 
-const updateConjuredQuality = (item:Item):Item => {
+const updateConjuredQuality = (item: Item):Item => {
     item.quality = updateQualityItem(item).quality;
     item.quality = updateQualityItem(item).quality;
     return item

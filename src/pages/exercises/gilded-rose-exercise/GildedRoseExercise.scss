@@ -5,7 +5,10 @@
   inset: 0;
   padding-left: 50px;
   padding-right: 50px;
-  font: 40px Inconsolata, monospace;
+
+  &__title, &__sub-title {
+    font: 45px Inconsolata, monospace;
+  }
 
   &__title, &__sub-title, &__results, &__description {
     color: #39ff14;

@@ -1,0 +1,21 @@
+
+.linter-exercise {
+  background-color: black;
+  height: 100%;
+  inset: 0;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: #39ff14;
+  text-shadow: 0 0 5px #C8C8C8;
+
+  &__task {
+    &__description {
+      font: 30px Inconsolata, monospace;
+    }
+
+    &__title {
+      margin-top: 70px;
+      font: 45px Inconsolata, monospace;
+    }
+  }
+}

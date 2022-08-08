@@ -38,7 +38,7 @@ const RefactoringExercise: FC = () => {
                     <p className="refactoring-exercise__description">
                         XtraVision2.0 has requested you to assist them with their new system which will print out statements for a customer.
                         <br/>It was wrote by an intern, taught by Matthew Wilson.
-                        <br/>The code for printing customer statements is pure <span onClick={() => window.open("https://www.youtube.com/watch?v=SW-BU6keEUw&ab_channel=JayGreen%27sstuff")}>spaghetti</span>.
+                        <br/>The code for printing customer statements is pure <span className="moms-spaghetti" onClick={() => window.open("https://www.youtube.com/watch?v=SW-BU6keEUw&ab_channel=JayGreen%27sstuff")}>spaghetti</span>.
                         <br/>Refactor the code in a clear and efficient way.
                     </p>
 

@@ -1,5 +1,3 @@
-import {sortBy} from "lodash";
-
 const REGEX_TO_SELECT_SPECIAL_CHARACTERS_EXCEPT_SPACES = /[^a-zA-Z ]/g;
 
 export function countWords(input: string): string[] {
