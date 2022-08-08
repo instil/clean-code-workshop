@@ -21,6 +21,8 @@ const LinterExercise: FC = () => {
                         <ol>
                             <li>Import the linter package
                                 <ul>Add the following packages to the `package.json` file:</ul>
+                                <ul>"@typescript-eslint/eslint-plugin": "^5.13.0"</ul>
+                                <ul>"@typescript-eslint/parser": "^5.13.0"</ul>
                                 <ul>"eslint": "^8.1.0"</ul>
                                 <ul>"eslint-plugin-import": "^2.25.4"</ul>
                             </li>
