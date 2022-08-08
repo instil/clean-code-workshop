@@ -5,14 +5,15 @@ import {Movie} from "./Movie";
 import Navbar from "../../../structure/navbar/Navbar";
 import TypingCarot from "../../../structure/typing-carot/TypingCarot";
 import "./RefactoringExercise.scss";
+import {PriceCode} from "./PriceCode";
 
 const RefactoringExercise: FC = () => {
     let output = "";
-    let peterPan = new Movie('Peter Pan', 'CHILDRENS');
-    let theHulk = new Movie('The Hulk', 'REGULAR');
-    let starWars = new Movie('Star Wars', 'REGULAR');
-    let toyStory = new Movie('Toy Story', 'CHILDRENS');
-    let drive = new Movie('Drive', 'NEW_RELEASE');
+    let peterPan = new Movie('Peter Pan', PriceCode.Childrens);
+    let theHulk = new Movie('The Hulk', PriceCode.Regular);
+    let starWars = new Movie('Star Wars', PriceCode.Regular);
+    let toyStory = new Movie('Toy Story', PriceCode.Childrens);
+    let drive = new Movie('Drive', PriceCode.NewRelease);
 
     let r1 = new Rental(peterPan, 2);
     let r2 = new Rental(theHulk, 1);

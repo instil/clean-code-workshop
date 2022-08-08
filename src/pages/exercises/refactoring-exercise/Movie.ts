@@ -1,9 +1,6 @@
-export class Movie {
-    private priceCode: any;
-    private title: any;
+import {PriceCode} from "./PriceCode";
 
-    constructor(title: any, priceCode: any) {
-        this.title = title;
-        this.priceCode = priceCode;
+export class Movie {
+    constructor(public title: string, public priceCode: PriceCode) {
     }
 }
