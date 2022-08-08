@@ -98,9 +98,11 @@ const SingleResponsibilityExercise: FC = () => {
                     <li>All the great movie titles: <span>{q2}</span></li>
                     <li>Title and rating of movies from 1984: <span>{q3}</span></li>
                     <li>All the quotes: <span>{q4}</span></li>
+                    {/*for finding the average quote utilise the meanBy function from lodash*/}
                     <li>Average quote length: <span>{q5}</span></li>
                     <li>Movies from the 1980s: <span>{q6}</span></li>
                     <li>Movies from the 1990s: <span>{q7}</span></li>
+                    {/*for grouping movies by rating utilise the groupBy function from lodash*/}
                     <li>Movies grouped by rating: <pre>{q8}</pre></li>
                 </ol>
                 <TypingCarot/>

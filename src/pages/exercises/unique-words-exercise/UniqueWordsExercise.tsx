@@ -2,19 +2,13 @@ import {FC, useState} from "react";
 import {dickens} from "./Dickens";
 import Navbar from "../../../structure/navbar/Navbar";
 import TypingCarot from "../../../structure/typing-carot/TypingCarot";
-import {countWords} from "./service/UniqueWordsProcessor";
 import "./UniqueWordsExercise.scss";
 
 const UniqueWordsExercise: FC = () => {
     const [input, setInput] = useState(dickens);
     const [output, setOutput] = useState([""]);
 
-    function execute(): void {
-        const wordCounts = countWords(input);
-        setOutput(wordCounts);
-    }
-
-    // function execute() {
+    function execute() {
         // TODO: Solutions goes here
         //       Process 'input' string and write result to 'output' string
 
@@ -37,8 +31,8 @@ const UniqueWordsExercise: FC = () => {
         // `
         // Note, sorted by occurrence
 
-        // setOutput(`The result goes here`)
-    // }
+        setOutput(["The result goes here"])
+    }
 
     return (
         <>

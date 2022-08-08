@@ -1,7 +1,6 @@
 import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
-import {GildedRose} from "./GildedRoseService";
-import {Item} from "./service/UpdateQuality";
+import {GildedRose, Item} from "./GildedRoseService";
 import "./GildedRoseExercise.scss";
 import TypingCarot from "../../../structure/typing-carot/TypingCarot";
 import GildedRoseOutput from "./GildedRoseOutput";
