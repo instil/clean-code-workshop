@@ -7,12 +7,10 @@
   "rules": {
     "import/no-cycle": "error",
     "import/no-named-as-default": "off",
-    // TODO: This should be active but some packages are not found which needs investigated
     "import/no-unresolved": "off",
-    "no-console": "error",
     "no-buffer-constructor": "error",
     "@typescript-eslint/ban-types": "off",
-    "react/prop-types": 0,
+    "react/prop-types":  0,
     "react/no-unescaped-entities": 0,
     "react/jsx-tag-spacing": [
       "error",
