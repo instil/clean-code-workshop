@@ -1,6 +1,6 @@
 import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
-import TypingCarot from "../../../structure/typing-carot/TypingCarot";
+import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import "./PalindromeExercise.scss";
 import {solution} from "./PalindromeService";
 import PalindromeIcon from "./PalindromeIcon";
@@ -20,7 +20,7 @@ const PalindromeExercise: FC = () => {
                 </div>
                 <h3 className="palindrome-exercise__sub-title">Your Answers:</h3>
                 <pre className="palindrome-exercise__results">{solution()}</pre>
-                <TypingCarot/>
+                <TypingCaret/>
             </div>
         </>
     );

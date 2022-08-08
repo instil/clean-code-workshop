@@ -1,6 +1,6 @@
 import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
-import TypingCarot from "../../../structure/typing-carot/TypingCarot";
+import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import "./LinterExercise.scss";
 
 const LinterExercise: FC = () => {
@@ -40,7 +40,7 @@ const LinterExercise: FC = () => {
                         </ol>
                     </p>
                 </div>
-                <TypingCarot/>
+                <TypingCaret/>
             </div>
         </>
     );

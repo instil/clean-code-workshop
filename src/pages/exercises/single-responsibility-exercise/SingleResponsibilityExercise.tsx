@@ -1,7 +1,7 @@
 import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
 import "./SingleResponsibilityExercise.scss";
-import TypingCarot from "../../../structure/typing-carot/TypingCarot";
+import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 
 const commando = require("../../../assets/commando.png");
 const conan = require("../../../assets/conan-the-barbarian.png");
@@ -105,7 +105,7 @@ const SingleResponsibilityExercise: FC = () => {
                     {/*for grouping movies by rating utilise the groupBy function from lodash*/}
                     <li>Movies grouped by rating: <pre>{q8}</pre></li>
                 </ol>
-                <TypingCarot/>
+                <TypingCaret/>
             </div>
         </>
     )
