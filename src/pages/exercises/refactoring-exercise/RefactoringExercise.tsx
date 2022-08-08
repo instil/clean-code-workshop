@@ -3,7 +3,7 @@ import {Customer} from "./Customer";
 import {Rental} from "./Rental";
 import {Movie} from "./Movie";
 import Navbar from "../../../structure/navbar/Navbar";
-import TypingCarot from "../../../structure/typing-carot/TypingCarot";
+import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import "./RefactoringExercise.scss";
 import {PriceCode} from "./PriceCode";
 
@@ -46,7 +46,7 @@ const RefactoringExercise: FC = () => {
                 </div>
                 <h3 className="refactoring-exercise__sub-title">Customer Statement:</h3>
                 <p className="refactoring-exercise__results">{output}</p>
-                <TypingCarot/>
+                <TypingCaret/>
             </div>
         </>
     );

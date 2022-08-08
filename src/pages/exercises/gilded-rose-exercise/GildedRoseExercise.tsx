@@ -3,7 +3,7 @@ import Navbar from "../../../structure/navbar/Navbar";
 import {GildedRose} from "./GildedRoseService";
 import {Item} from "./service/UpdateQuality";
 import "./GildedRoseExercise.scss";
-import TypingCarot from "../../../structure/typing-carot/TypingCarot";
+import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import GildedRoseOutput from "./GildedRoseOutput";
 import Rose from "../../../structure/ascii-art/Rose";
 
@@ -68,11 +68,11 @@ const GildedRoseExercise: FC = () => {
               <h3 className="gilded-rose-exercise__sub-title">Output:</h3>
               <p className="gilded-rose-exercise__results">
                   <p>{output.map(it => {
-                      if (!it) return <TypingCarot/>
+                      if (!it) return <TypingCaret/>
                       else return <GildedRoseOutput item={it}/>
                   })}</p>
               </p>
-              <TypingCarot/>
+              <TypingCaret/>
           </div>
       </>
     );

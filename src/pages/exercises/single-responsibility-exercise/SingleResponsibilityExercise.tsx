@@ -1,7 +1,7 @@
 import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
 import "./SingleResponsibilityExercise.scss";
-import TypingCarot from "../../../structure/typing-carot/TypingCarot";
+import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import {Movie} from "./Movie";
 const commando = require("../../../assets/commando.png");
 const conan = require("../../../assets/conan-the-barbarian.png");
@@ -88,7 +88,7 @@ const SingleResponsibilityExercise: FC = () => {
                     <li>Movies from the 1990s: <span>{q7}</span></li>
                     <li>Movies grouped by rating: <pre>{q8}</pre></li>
                 </ol>
-                <TypingCarot/>
+                <TypingCaret/>
             </div>
         </>
     )

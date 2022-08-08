@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
 import {dickens} from "./Dickens";
 import Navbar from "../../../structure/navbar/Navbar";
-import TypingCarot from "../../../structure/typing-carot/TypingCarot";
+import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import {countWords} from "./service/UniqueWordsProcessor";
 import "./UniqueWordsExercise.scss";
 
@@ -32,7 +32,7 @@ const UniqueWordsExercise: FC = () => {
                 <h3 className="unique-words-exercise__sub-title">Output:</h3>
                 <p className="unique-words-exercise__results">
                     <p>{output.map(it => {
-                        if (!it) return <TypingCarot/>
+                        if (!it) return <TypingCaret/>
                         else return <p key={it}>{it}</p>
                     })}</p>
                 </p>
