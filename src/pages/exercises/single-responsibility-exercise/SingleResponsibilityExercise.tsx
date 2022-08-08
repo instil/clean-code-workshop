@@ -21,96 +21,37 @@ function toTitle(movie: Movie) {
 }
 
 const SingleResponsibilityExercise: FC = () => {
-    // class Movie {
-    //     constructor(
-    //         public readonly title: string,
-    //         public readonly rating: string,
-    //         public readonly releaseDate: Date,
-    //         public readonly quotes: string[]
-    //     ) {
-    //     }
-    // }
+    let [q1, q2, q3, q4, q5, q6, q7, q8] = ["", "", "", "", "", "", "", ""];
+    const movies = buildData();
 
-    let [q1, q2, q3, q4, q5, q6, q7, q8] = ['', '', '', '', '', '', '', ''];
+    q1 = movies.map(it => it.title).join(" ");
 
-    // function buildData() {
-    //     const movies = [
-    //         new Movie("Conan", "GREAT",
-    //             new Date(1984, 6, 29),
-    //             ["Enough talk!"]),
-    //         new Movie("Terminator",
-    //             "GREAT",
-    //             new Date(1984, 10, 26),
-    //             ["I'll be back."]),
-    //         new Movie("Terminator 2",
-    //             "BRILLIANT",
-    //             new Date(1991, 7, 3),
-    //             ["Come with me if you want to live.",
-    //                 "Hasta la vista, baby.",
-    //                 "It's in your nature to destroy yourselves."]),
-    //         new Movie("Commando",
-    //             "SUPERB",
-    //             new Date(1984, 10, 4),
-    //             ["I have to remind you Sully, this is my weak arm!",
-    //                 "I eat Green Berets for breakfast. And right now, I'm very hungry!",
-    //                 "Don't disturb my friend, he's dead tired.",
-    //                 "Come on Bennett, let's party!",
-    //                 "Let off some steam, Bennett."]),
-    //         new Movie("Predator",
-    //             "LIFE_CHANGING",
-    //             new Date(1987, 6, 12),
-    //             ["Get to the Chopper!",
-    //                 "Stick around.",
-    //                 "If it bleeds, we can kill it.",
-    //                 "He's using the trees.",
-    //                 "We move, five meter spread, no sound."]),
-    //         new Movie("Total Recall",
-    //             "GREAT",
-    //             new Date(1990, 6, 1),
-    //             ["Get your ass to Mars.",
-    //                 "Relax. You'll live longer.",
-    //                 "If I am not me, then who the hell am I?",
-    //                 "Look who's talking."])
-    //     ];
-    //     return movies;
-    // }
-
-    const data = buildData();
-    // let listOfMovieTitles = "";
-    // for (let i = 0; i < data.length; i++) {
-    //     listOfMovieTitles += data[i].title + " ";
-    // }
-    // q1 = listOfMovieTitles;
-
-    q1 = data.map(it => it.title).join(" ");
-
-    q2 = data
+    q2 = movies
         .filter(m => m.rating === "GREAT")
         .map(it => it.title)
         .join(" ");
 
-    q3 = data
+    q3 = movies
         .filter(m => m.releaseDate.getFullYear() === 1984)
         .map(m => `${m.title} - ${m.rating}`)
         .join(" ");
 
-    const allQuotes = data.flatMap(m => m.quotes);
-
+    const allQuotes = movies.flatMap(m => m.quotes);
     q4 = allQuotes.join(" ");
 
     q5 = _.meanBy(allQuotes, quote => quote.length).toFixed(2);
 
-    q6 = data
+    q6 = movies
         .filter(movie => isMovieInDecade(movie, 1980))
         .map(toTitle)
         .join(", ");
 
-    q7 = data
+    q7 = movies
         .filter(movie => isMovieInDecade(movie, 1990))
         .map(toTitle)
         .join(", ");
 
-    const moviesByRating = _.groupBy(data, m => m.rating);
+    const moviesByRating = _.groupBy(movies, m => m.rating);
     q8 = Object.entries(moviesByRating)
         .map(([rating, movies]) => `${rating}:\n\t${movies.map(toTitle).join("\n\t")}`)
         .join('\n');

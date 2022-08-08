@@ -14,32 +14,6 @@ const UniqueWordsExercise: FC = () => {
         setOutput(wordCounts);
     }
 
-    // function execute() {
-        // TODO: Solutions goes here
-        //       Process 'input' string and write result to 'output' string
-
-        // Examples
-        // "The the the a a" would produce
-        // `
-        // the = 3
-        // a = 2
-        // `
-        // Not the case-insensitive result
-        //
-        // "When in Rome, do as the Romans do."
-        // `
-        // do = 2
-        // when = 1
-        // in = 1
-        // rome = 1
-        // as = 1
-        // the = 1
-        // `
-        // Note, sorted by occurrence
-
-        // setOutput(`The result goes here`)
-    // }
-
     return (
         <>
             <Navbar pageTitle="Unique Words Exercise"/>

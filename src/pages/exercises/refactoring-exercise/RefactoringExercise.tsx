@@ -8,7 +8,7 @@ import "./RefactoringExercise.scss";
 import {PriceCode} from "./PriceCode";
 
 const RefactoringExercise: FC = () => {
-    let output = "";
+    let output: string;
     let peterPan = new Movie('Peter Pan', PriceCode.Childrens);
     let theHulk = new Movie('The Hulk', PriceCode.Regular);
     let starWars = new Movie('Star Wars', PriceCode.Regular);
