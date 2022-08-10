@@ -27,7 +27,7 @@ const LinterExercise: FC = () => {
                                 <ul>"eslint-plugin-import": "^2.25.4"</ul>
                             </li>
 
-                            <li>Create an .eslintrc.json file in the root of the project (this will have been done for you)
+                            <li>Create an .eslintrc.json file in the root of the project (this file will be sent to you)
                             </li>
                             <li>Adjust the rules to display and error when:
                                 <ul>There are missing semi colons</ul>
@@ -37,6 +37,9 @@ const LinterExercise: FC = () => {
                             </li>
                             <li>Add a linting command to package.json
                                 <ul>"lint": "eslint . --ext .ts, --ext .tsx"</ul>
+                            </li>
+                            <li>Add the "eslintConfig" to package.json with the following config:
+                                <ul>`extends: ["react-app", "react-app/jest"]`</ul>
                             </li>
                             <li>In the IntelliJ terminal, run `yarn lint` & resolve any errors</li>
                         </ol>
