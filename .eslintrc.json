@@ -11,6 +11,10 @@
     "no-buffer-constructor": "error",
     "@typescript-eslint/ban-types": "off",
     "react/prop-types":  0,
+    "semi": "error",
+    "no-console": "error",
+    "quotes": "error",
+    "no-multi-spaces": "error",
     "react/no-unescaped-entities": 0,
     "react/jsx-tag-spacing": [
       "error",
