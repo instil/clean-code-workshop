@@ -41,15 +41,16 @@ const SingleResponsibilityExercise: FC = () => {
 
     q5 = _.meanBy(allQuotes, quote => quote.length).toFixed(2);
 
-    q6 = movies
-        .filter(movie => isMovieInDecade(movie, 1980))
-        .map(toTitle)
-        .join(", ");
+    q6 = getMoviesByDecade(1980);
 
-    q7 = movies
-        .filter(movie => isMovieInDecade(movie, 1990))
-        .map(toTitle)
-        .join(", ");
+    q7 = getMoviesByDecade(1990);
+
+    function getMoviesByDecade(year: number): string {
+        return movies
+            .filter(movie => isMovieInDecade(movie, year))
+            .map(toTitle)
+            .join(", ");
+    }
 
     const moviesByRating = _.groupBy(movies, m => m.rating);
     q8 = Object.entries(moviesByRating)
@@ -91,7 +92,7 @@ const SingleResponsibilityExercise: FC = () => {
                 <TypingCaret/>
             </div>
         </>
-    )
+    );
 };
 
 export default SingleResponsibilityExercise;
