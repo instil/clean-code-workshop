@@ -14,28 +14,25 @@ export class Customer {
     }
 
     statement() {
-        var {frequentRenterPoints, result, totalAmount} = this.iterateRentals();
+        var {frequentRenterPoints, result, totalAmount} = this.reportRentals();
         result += `Amount owed is ${totalAmount}\nYou earned ${frequentRenterPoints} frequent renter points\n`;
         return result.toString();
     }
 
-    private iterateRentals() {
+    private reportRentals() {
         let frequentRenterPoints: number = 0
         let totalAmount: number = 0
-        let result = `\nRental Record for ${this.name} \n`
+        let result = `\nRental Record for ${this.name}\n`
         this.rentals.forEach(rental => {
             let thisAmount = this.rentalType(rental, 0);
-            frequentRenterPoints = this.decideRental(rental, frequentRenterPoints);
+            frequentRenterPoints = this.decidePoints(rental, frequentRenterPoints);
             result += `\t${rental.daysRented}\t${rental.movie.title}\t${thisAmount}\n`;
             totalAmount = totalAmount + thisAmount;
         })
-        console.log(`Total: ${String(totalAmount)}`)
         return {frequentRenterPoints, result, totalAmount};
     }
 
-
-
-    private decideRental(rental: Rental, frequentRenterPoints: number) {
+    private decidePoints(rental: Rental, frequentRenterPoints: number) {
         if (this.rentalCondition(rental)) {
             frequentRenterPoints += 2;
         } else {
@@ -44,13 +41,9 @@ export class Customer {
         return frequentRenterPoints;
     }
 
-
-
     private rentalCondition(rental: Rental) {
         return (rental.movie.priceCode === 'NEW_RELEASE') && rental.daysRented > 1;
     }
-
-
 
     private rentalType(rental: Rental, thisAmount: number): number {
         switch (rental.movie.priceCode) {
@@ -70,7 +63,6 @@ export class Customer {
                 }
                 break;
         }
-        console.log(`This: ${thisAmount}`)
         return thisAmount;
     }
 }
