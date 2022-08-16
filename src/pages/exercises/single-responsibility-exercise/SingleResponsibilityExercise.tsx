@@ -17,12 +17,13 @@ const SingleResponsibilityExercise: FC = () => {
     let [q1, q2, q3, q4, q5, q6, q7, q8] = ['', '', '', '', '', '', '', ''];
     q1 = Movie.moviesTitle();
     q2 = Movie.MovieswithRating("GREAT");
-    q3 = Movie.Movies1984();
+    q3 = Movie.Moviesin(1984);
     q4 = Movie.MovieQuotes();
     q5 = Movie.movieQuoteLength();
     q6 = Movie.MoviesinRange(1980, 1989);
     q7 = Movie.MoviesinRange(1990, 1999);
     q8 = Movie.movieByRating(["GREAT","SUPERB","BRILLIANT","LIFE_CHANGING"])
+
     return (
         <>
             <Navbar pageTitle="Single Responsibility Exercise"/>
@@ -50,11 +51,9 @@ const SingleResponsibilityExercise: FC = () => {
                     <li>All the great movie titles: <span>{q2}</span></li>
                     <li>Title and rating of movies from 1984: <span>{q3}</span></li>
                     <li>All the quotes: <span>{q4}</span></li>
-                    {/*for finding the average quote utilise the meanBy function from lodash*/}
                     <li>Average quote length: <span>{q5}</span></li>
                     <li>Movies from the 1980s: <span>{q6}</span></li>
                     <li>Movies from the 1990s: <span>{q7}</span></li>
-                    {/*for grouping movies by rating utilise the groupBy function from lodash*/}
                     <li>Movies grouped by rating: <pre>{q8}</pre></li>
                 </ol>
                 <TypingCaret/>

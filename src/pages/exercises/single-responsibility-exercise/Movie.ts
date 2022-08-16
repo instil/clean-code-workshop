@@ -66,9 +66,9 @@ export class Movie {
     };
 
 
-    static Movies1984(): string {
+    static Moviesin(year: number): string {
         return this.movieData
-                .filter(movie => movie.releaseDate.getFullYear() === 1984)
+                .filter(movie => movie.releaseDate.getFullYear() === year)
                 .map(movie => `Movie Title: ${movie.title} Rating: ${movie.rating}`)
                 .join(",")
     }
@@ -89,18 +89,15 @@ export class Movie {
     }
 
     static movieQuoteLength(): string {
-       return _.meanBy(
-            this.movieData
-           .flatMap(movie => movie.quotes)
-           .map(quote => quote.length)
-       ).toFixed()
+       return _.meanBy(this.MovieQuotes()).toFixed()
     }
 
     static movieByRating(phrases: string[]): string {
         let output = " "
         phrases.forEach(phrase => {
-            output += `Movies with the rating ${phrase} \n`;
+            output += `Movies with the rating ${phrase}: \n`;
             output += this.MovieswithRating(phrase) + "\n";
+            output += "\n";
         });
         return  output
     }
