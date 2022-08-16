@@ -7,30 +7,31 @@ export class Customer {
     constructor(public name: string) {
     }
 
-    addRental(...rentals: Rental[]) {
+    addRental(...rentals: Rental[]): void {
         rentals.forEach(rental => this.rentals.push(rental))
     }
 
-    statement() {
+    statement(): string {
         return `Rental Record for ${this.name}
-                ${getRentedMovies(this.rentals)}
-                Amount owed is $${getRentalsCost(this.rentals)}
-                You earned ${getFrequentRentalPoints(this.rentals)} frequent renter points`
+                ${this.getRentedMovies()}
+                Amount owed is $${this.getRentalsCost()}
+                You earned ${this.getFrequentRentalPoints()} frequent renter points`
     }
-}
 
-function getRentalsCost(rentals: Rental[]) {
-    return rentals
-        .map(rental => rental.movie.priceCode * rental.daysRented)
-        .reduce((previousValue, currentValue) => previousValue + currentValue);
-}
+    private getRentedMovies(): string {
+        return this.rentals
+            .reduce((rentalList, currentRental) => rentalList + `Days Rented: ${currentRental.daysRented}\t  Movie: ${currentRental.movie.title}\t Price: ${currentRental.movie.priceCode.valueOf()}\n`, "")
+    }
 
-function getFrequentRentalPoints(rentals: Rental[]) {
-    return rentals
-        .map(rental => rental.movie.priceCode === Price.New_Release && rental.daysRented > 1)
-        .reduce((previousValue, currentValue) => previousValue + (currentValue ? 2 : 1), 0);
-}
+    private getRentalsCost(): number {
+        return this.rentals
+            .map(rental => rental.getPrice())
+            .reduce((total, rentalPrice) => total + rentalPrice);
+    }
 
-function getRentedMovies(rentals: Rental[]) {
-    return rentals.reduce((previousValue, currentValue) => previousValue + `Days Rented: ${currentValue.daysRented}\t  Movie: ${currentValue.movie.title}\t Price: ${currentValue.movie.priceCode.valueOf()}\n`, "")
+    private getFrequentRentalPoints(): number {
+        return this.rentals
+            .map(rental => rental.movie.priceCode === Price.New_Release && rental.daysRented > 1)
+            .reduce((total, isDoublePoints) => total + (isDoublePoints ? 2 : 1), 0);
+    }
 }

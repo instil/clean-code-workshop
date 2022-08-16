@@ -16,7 +16,6 @@ const RefactoringExercise: FC = () => {
         new Rental(new Movie('Toy Story', Price.Childrens), 2),
         new Rental(new Movie('Drive', Price.New_Release), 10)
     );
-    let statement = customer.statement();
 
     return (
         <>
@@ -33,7 +32,7 @@ const RefactoringExercise: FC = () => {
 
                 </div>
                 <h3 className="refactoring-exercise__sub-title">Customer Statement:</h3>
-                <p className="refactoring-exercise__results">{statement}</p>
+                <p className="refactoring-exercise__results">{customer.statement()}</p>
                 <TypingCaret/>
             </div>
         </>
