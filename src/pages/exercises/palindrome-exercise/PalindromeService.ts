@@ -8,6 +8,7 @@ const data = [
 	"Some men interpret nine memos",
 	"Gnorts, Mr Alien"
 ];
+const REGEX_NON_ALPHANUMERIC = /[\W_]/g;
 
 export const solution = () => buildOutput(data);
 
@@ -37,4 +38,4 @@ const clean =
 	(original: string) =>
 		original
 			.toLowerCase()
-			.replaceAll(/[\W_]/g, "");
+			.replaceAll(REGEX_NON_ALPHANUMERIC, "");

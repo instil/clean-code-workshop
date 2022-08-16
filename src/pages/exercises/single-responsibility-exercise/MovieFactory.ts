@@ -1,27 +1,29 @@
-export class MovieBuilder {
+import {Movie} from "./Movie";
+
+export class MovieFactory {
 	public static buildMovies() {
 		return [
-			{
-				title: "Conan",
-				rating: "GREAT",
-				releaseDate: new Date(1984, 6, 29),
-				quotes: ["Enough talk!"]
-			},
-			{
-				title: "Terminator",
-				rating: "GREAT",
-				releaseDate: new Date(1984, 10, 26),
-				quotes: ["I'll be back."]
-			},
-			{
-				title: "Terminator 2",
-				rating: "BRILLIANT",
-				releaseDate: new Date(1991, 7, 3),
-				quotes: ["Come with me if you want to live.",
-					"Hasta la vista, baby.",
-					"It's in your nature to destroy yourselves."]
-			},
-			{
+			MovieFactory.buildMovie(
+				"Conan",
+				"GREAT",
+				new Date(1984, 6, 29),
+				"Enough talk!"
+			),
+			MovieFactory.buildMovie(
+				"Terminator",
+				"GREAT",
+				new Date(1984, 10, 26),
+				"I'll be back"
+			),
+			MovieFactory.buildMovie(
+				"Terminator 2",
+				"BRILLIANT",
+				new Date(1991, 7, 3),
+				"Come with me if you want to live.",
+				"Hasta la vista, baby.",
+				"It's in your nature to destroy yourselves."
+			),
+			/* {
 				title:"Commando",
 				rating:"SUPERB",
 				releaseDate:new Date(1984, 10, 4),
@@ -49,7 +51,16 @@ export class MovieBuilder {
 					"Relax. You'll live longer.",
 					"If I am not me, then who the hell am I?",
 					"Look who's talking."]
-			}
+			} */
 		];
+	}
+
+	public static buildMovie = (title:string, rating:string, releaseDate:Date, ...quotes: string[]) => {
+		return {
+			title: title,
+			rating: rating,
+			releaseDate: releaseDate,
+			quotes: quotes
+		} as Movie;
 	}
 }

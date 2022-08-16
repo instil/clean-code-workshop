@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Item} from "./GildedRoseService";
+import {Item} from "./Item";
 
 interface Props {
     item: Item
