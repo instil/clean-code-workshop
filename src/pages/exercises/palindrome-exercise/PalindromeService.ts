@@ -15,10 +15,9 @@ export const solution = () => {
 };
 
 function isPalindrome(inputStatement: string): boolean {
-        return sanitise(inputStatement) === sanitise(inputStatement.split("").reverse().join(""));
+    return sanitise(inputStatement) === sanitise(inputStatement.split("").reverse().join(""));
 }
 
 function sanitise(inputStatement: string) {
     return inputStatement.toLowerCase().replaceAll(/[\W_]/g, "")
 }
-
