@@ -16,55 +16,84 @@ export class GildedRose {
     constructor(items = [] as Array<Item>) {
         this.items = items;
     }
-
+    
+    private static AGED_BRIE = "Aged Brie";
+    private static BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    private static SULFURAS = "Sulfuras, Hand of Ragnaros";
+    private static CONJURED = "Conjured";
+    
     updateQuality() {
-        for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i].name !== 'Aged Brie' && this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
-                if (this.items[i].quality > 0) {
-                    if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-                        this.items[i].quality = this.items[i].quality - 1
-                    }
-                }
+        this.items.forEach(item => {
+            if (this.isConjured(item) && this.hasQuality(item)) {
+                this.decrementQuality(item);
             } else {
-                if (this.items[i].quality < 50) {
-                    this.items[i].quality = this.items[i].quality + 1
-                    if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].sellIn < 11) {
-                            if (this.items[i].quality < 50) {
-                                this.items[i].quality = this.items[i].quality + 1
-                            }
-                        }
-                        if (this.items[i].sellIn < 6) {
-                            if (this.items[i].quality < 50) {
-                                this.items[i].quality = this.items[i].quality + 1
-                            }
-                        }
+                if (this.qualityIsLessThanFifty(item)) {
+                    this.incrementQuality(item);
+                    if (this.isBackstagePasses(item)) {
+                        if (this.sellInIsLessThan(11, item)) this.incrementQuality(item);
+                        if (this.sellInIsLessThan(6, item)) this.incrementQuality(item);
                     }
                 }
             }
-            if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-                this.items[i].sellIn = this.items[i].sellIn - 1;
+            if (!this.isSulfuras(item)) {
+                this.decrementQuality(item);
             }
-            if (this.items[i].sellIn < 0) {
-                if (this.items[i].name !== 'Aged Brie') {
-                    if (this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].quality > 0) {
-                            if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-                                this.items[i].quality = this.items[i].quality - 1
-                            }
-                        }
+            if (this.sellInIsLessThan(0, item)) {
+                if (!this.isAgedBrie(item) && !this.isBackstagePasses(item)) {
+                    if (this.hasQuality(item) && !this.isSulfuras(item)) {
+                        this.decrementQuality(item);
                     } else {
-                        this.items[i].quality = this.items[i].quality - this.items[i].quality
+                        this.setItemQualityToZero(item);
                     }
                 } else {
-                    if (this.items[i].quality < 50) {
-                        this.items[i].quality = this.items[i].quality + 1
+                    if (this.qualityIsLessThanFifty(item)) {
+                        this.incrementQuality(item);
                     }
                 }
             }
-        }
-
+        });
+        
         return this.items;
+    }
+
+    private isAgedBrie(item: Item) {
+        return item.name === GildedRose.AGED_BRIE;
+    }
+
+    private isSulfuras(item: Item) {
+        return item.name === GildedRose.SULFURAS;
+    }
+
+    private sellInIsLessThan(value: number, item: Item) {
+        return item.sellIn < value;
+    }
+
+    private setItemQualityToZero(item: Item) {
+        item.quality = 0;
+    }
+
+    private isBackstagePasses(item: Item) {
+        return item.name === GildedRose.BACKSTAGE_PASSES;
+    }
+
+    private qualityIsLessThanFifty(item: Item) {
+        return item.quality < 50;
+    }
+
+    private isConjured(item: Item) {
+        return item.name === GildedRose.CONJURED;
+    }
+
+    private hasQuality(item: Item) {
+        return item.quality > 0;
+    }
+
+    private incrementQuality(item: Item) {
+        item.quality = item.quality + 1;
+    }
+
+    private decrementQuality(item: Item) {
+        item.quality = item.quality - 1;
     }
 }
 

@@ -7,8 +7,8 @@ const sound = require("./didnt-say-the-magic-word.mp3");
 const NotFound: FC = () => {
     const history = useHistory();
     const goToUrl = (url: string): void => {
-        history.push(url)
-    }
+        history.push(url);
+    };
 
     return (
         <div className="not-found">
@@ -26,7 +26,7 @@ const NotFound: FC = () => {
                 </h1>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default NotFound;

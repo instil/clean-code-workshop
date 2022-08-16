@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC} from "react";
 import RouterOutlet from "./router/components/RouterOutlet";
 import {BrowserRouter as Router} from "react-router-dom";
 

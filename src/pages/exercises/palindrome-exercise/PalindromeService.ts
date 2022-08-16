@@ -9,11 +9,26 @@ const data = [
     "Gnorts, Mr Alien"
 ];
 
+const REGEX_FOR_SPECIAL_CHARS = /[^a-zA-Z]/g;
+
 export const solution = () => {
-    let output = ""
-    for(let str of data) {
-        output += `"${str}" might be a palindrome\n`;
-    }
+    let output = "";
+    data.forEach(sentence => {
+        output += `"${sentence}" ${isPalindrome(sentence) ? "is" : "is not"} a palindrome\n`;
+    });
     return output;
+};
+
+function purifySentence(sentence: string) {
+    return sentence
+        .trim()
+        .toLowerCase()
+        .replace(REGEX_FOR_SPECIAL_CHARS, "");
+}
+
+export const isPalindrome = (sentence: string) => {
+    const purifiedSentence = purifySentence(sentence);
+    const reversedSentence = purifiedSentence.split("").reverse().join("");
+    return purifiedSentence === reversedSentence;
 };
 
