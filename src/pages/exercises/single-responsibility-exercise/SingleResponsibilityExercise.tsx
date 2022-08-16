@@ -2,6 +2,7 @@ import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
 import "./SingleResponsibilityExercise.scss";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
+import {Movie} from "./Movie";
 
 const commando = require("../../../assets/commando.png");
 const conan = require("../../../assets/conan-the-barbarian.png");
@@ -11,66 +12,17 @@ const terminator2 = require("../../../assets/terminator2.png");
 const totalRecall = require("../../../assets/total-recall.png");
 
 const SingleResponsibilityExercise: FC = () => {
-    class Movie {
-        constructor(
-            public readonly title: string,
-            public readonly rating: string,
-            public readonly releaseDate: Date,
-            public readonly quotes: string[]
-        ) {
-        }
-    }
+
 
     let [q1, q2, q3, q4, q5, q6, q7, q8] = ['', '', '', '', '', '', '', ''];
-
-    function buildData() {
-        const movies = [
-            new Movie("Conan", "GREAT",
-                new Date(1984, 6, 29),
-                ["Enough talk!"]),
-            new Movie("Terminator",
-                "GREAT",
-                new Date(1984, 10, 26),
-                ["I'll be back."]),
-            new Movie("Terminator 2",
-                "BRILLIANT",
-                new Date(1991, 7, 3),
-                ["Come with me if you want to live.",
-                    "Hasta la vista, baby.",
-                    "It's in your nature to destroy yourselves."]),
-            new Movie("Commando",
-                "SUPERB",
-                new Date(1984, 10, 4),
-                ["I have to remind you Sully, this is my weak arm!",
-                    "I eat Green Berets for breakfast. And right now, I'm very hungry!",
-                    "Don't disturb my friend, he's dead tired.",
-                    "Come on Bennett, let's party!",
-                    "Let off some steam, Bennett."]),
-            new Movie("Predator",
-                "LIFE_CHANGING",
-                new Date(1987, 6, 12),
-                ["Get to the Chopper!",
-                    "Stick around.",
-                    "If it bleeds, we can kill it.",
-                    "He's using the trees.",
-                    "We move, five meter spread, no sound."]),
-            new Movie("Total Recall",
-                "GREAT",
-                new Date(1990, 6, 1),
-                ["Get your ass to Mars.",
-                    "Relax. You'll live longer.",
-                    "If I am not me, then who the hell am I?",
-                    "Look who's talking."])
-        ];
-        return movies;
-    }
-
-    const data = buildData();
-    let listOfMovieTitles = "";
-    for (let i = 0; i < data.length; i++) {
-        listOfMovieTitles += data[i].title + " ";
-    }
-    q1 = listOfMovieTitles;
+    q1 = Movie.moviesTitle();
+    q2 = Movie.MovieswithRating("GREAT");
+    q3 = Movie.Movies1984();
+    q4 = Movie.MovieQuotes();
+    q5 = Movie.movieQuoteLength();
+    q6 = Movie.MoviesinRange(1980, 1989);
+    q7 = Movie.MoviesinRange(1990, 1999);
+    q8 = Movie.movieByRating(["GREAT","SUPERB","BRILLIANT","LIFE_CHANGING"])
     return (
         <>
             <Navbar pageTitle="Single Responsibility Exercise"/>
