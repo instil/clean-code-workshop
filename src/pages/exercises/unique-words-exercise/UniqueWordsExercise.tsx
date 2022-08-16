@@ -6,32 +6,13 @@ import "./UniqueWordsExercise.scss";
 
 const UniqueWordsExercise: FC = () => {
     const [input, setInput] = useState(dickens);
-    const [output, setOutput] = useState([""]);
+    const [output, setOutput] = useState("");
 
     function execute() {
-        // TODO: Solutions goes here
-        //       Process 'input' string and write result to 'output' string
-
-        // Examples
-        // "The the the a a" would produce
-        // `
-        // the = 3
-        // a = 2
-        // `
-        // Not the case-insensitive result
-        //
-        // "When in Rome, do as the Romans do."
-        // `
-        // do = 2
-        // when = 1
-        // in = 1
-        // rome = 1
-        // as = 1
-        // the = 1
-        // `
-        // Note, sorted by occurrence
-
-        setOutput(["The result goes here"])
+        const unique = require('unique-words');
+        let obj = unique.counts(input);
+        const myJSON = JSON.stringify(obj);
+        setOutput(myJSON);
     }
 
     return (
@@ -51,10 +32,13 @@ const UniqueWordsExercise: FC = () => {
                 <button className="process-button" onClick={execute}>Process</button>
                 <h3 className="unique-words-exercise__sub-title">Output:</h3>
                 <p className="unique-words-exercise__results">
+                    <p>{output}</p>
+                    {/*
                     <p>{output.map(it => {
                         if (!it) return <TypingCaret/>
                         else return <p key={it}>{it}</p>
                     })}</p>
+                    */}
                 </p>
             </div>
         </>

@@ -92,7 +92,7 @@ export class Movie {
        return _.meanBy(this.MovieQuotes()).toFixed()
     }
 
-    static movieGroupByRating(phrases: string[]): string {
+    static movieByRating(phrases: string[]): string {
         let output = " "
         phrases.forEach(phrase => {
             output += `Movies with the rating ${phrase}: \n`;

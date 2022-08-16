@@ -22,7 +22,7 @@ const SingleResponsibilityExercise: FC = () => {
     q5 = Movie.movieQuoteLength();
     q6 = Movie.MoviesinRange(1980, 1989);
     q7 = Movie.MoviesinRange(1990, 1999);
-    q8 = Movie.movieGroupByRating(["GREAT","SUPERB","BRILLIANT","LIFE_CHANGING"])
+    q8 = Movie.movieByRating(["GREAT","SUPERB","BRILLIANT","LIFE_CHANGING"])
 
     return (
         <>
