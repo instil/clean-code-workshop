@@ -83,12 +83,12 @@ export class GildedRose {
         return (name === 'Backstage passes to a TAFKAL80ETC concert')
     }
 
-    private isQualityLessThan(quality: number, checkAgainst: number): boolean{
-        return (quality < checkAgainst);
-    }
-
     private isSellInLessThan(sellIn: number, checkAgainst: number): boolean{
         return (sellIn < checkAgainst);
+    }
+
+    private isQualityLessThan(quality: number, checkAgainst: number): boolean{
+        return (quality < checkAgainst);
     }
 }
 
