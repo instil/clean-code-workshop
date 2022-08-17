@@ -37,7 +37,7 @@ const SingleResponsibilityExercise: FC = () => {
     }
 
     function getAllQuotes(): string[] {
-        return movies.flatMap(movie => `"${movie.quotes}"\t`)
+        return movies.flatMap(movie => `"${movie.quotes}"\t`);
     }
 
     function getAverageQuoteLength() : string {
@@ -93,7 +93,7 @@ const SingleResponsibilityExercise: FC = () => {
                 <TypingCaret/>
             </div>
         </>
-    )
+    );
 };
 
 export default SingleResponsibilityExercise;

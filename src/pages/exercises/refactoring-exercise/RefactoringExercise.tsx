@@ -8,13 +8,13 @@ import {Customer} from "./Customer";
 import {Price} from "./Price";
 
 const RefactoringExercise: FC = () => {
-    let customer = new Customer('Kieran Magee');
+    let customer = new Customer("Kieran Magee");
     customer.addRental(
-        new Rental(new Movie('Peter Pan', Price.Childrens), 2),
-        new Rental(new Movie('The Hulk', Price.Regular), 1),
-        new Rental(new Movie('Star Wars', Price.Regular), 3),
-        new Rental(new Movie('Toy Story', Price.Childrens), 2),
-        new Rental(new Movie('Drive', Price.New_Release), 10)
+        new Rental(new Movie("Peter Pan", Price.Childrens), 2),
+        new Rental(new Movie("The Hulk", Price.Regular), 1),
+        new Rental(new Movie("Star Wars", Price.Regular), 3),
+        new Rental(new Movie("Toy Story", Price.Childrens), 2),
+        new Rental(new Movie("Drive", Price.New_Release), 10)
     );
 
     return (

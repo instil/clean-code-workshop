@@ -8,19 +8,19 @@ export class Customer {
     }
 
     addRental(...rentals: Rental[]): void {
-        rentals.forEach(rental => this.rentals.push(rental))
+        rentals.forEach(rental => this.rentals.push(rental));
     }
 
     statement(): string {
         return `Rental Record for ${this.name}
                 ${this.getRentedMovies()}
                 Amount owed is $${this.getRentalsCost()}
-                You earned ${this.getFrequentRentalPoints()} frequent renter points`
+                You earned ${this.getFrequentRentalPoints()} frequent renter points`;
     }
 
     private getRentedMovies(): string {
         return this.rentals
-            .reduce((rentalList, currentRental) => rentalList + `Days Rented: ${currentRental.daysRented}\t  Movie: ${currentRental.movie.title}\t Price: ${currentRental.movie.priceCode.valueOf()}\n`, "")
+            .reduce((rentalList, currentRental) => rentalList + `Days Rented: ${currentRental.daysRented}\t  Movie: ${currentRental.movie.title}\t Price: ${currentRental.movie.priceCode.valueOf()}\n`, "");
     }
 
     private getRentalsCost(): number {

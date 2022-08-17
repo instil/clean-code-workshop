@@ -9,8 +9,8 @@ interface Props {
 const Navbar: FC<Props> = ({pageTitle}) => {
     const history = useHistory();
     const goToUrl = (url: string): void => {
-        history.push(url)
-    }
+        history.push(url);
+    };
 
     return (
         <div className="navbar">

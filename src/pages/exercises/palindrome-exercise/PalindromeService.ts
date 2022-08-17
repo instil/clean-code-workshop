@@ -11,13 +11,13 @@ const data = [
 
 export const solution = () => {
     return data.map(inputStatement => [inputStatement, isPalindrome(inputStatement)])
-        .map(([inputStatement, isPalindrome]) => `"${inputStatement}" ${isPalindrome ? "is" : "is not"} a palindrome\n`)
+        .map(([inputStatement, isPalindrome]) => `"${inputStatement}" ${isPalindrome ? "is" : "is not"} a palindrome\n`);
 };
 
 function isPalindrome(inputStatement: string): boolean {
     return sanitise(inputStatement) === sanitise(inputStatement.split("").reverse().join(""));
 }
 
-function sanitise(inputStatement: string) {
-    return inputStatement.toLowerCase().replaceAll(/[\W_]/g, "")
+function sanitise(inputStatement: string): string {
+    return inputStatement.toLowerCase().replaceAll(/[\W_]/g, "");
 }

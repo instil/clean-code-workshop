@@ -1,10 +1,11 @@
 import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
-import {GildedRose, Item} from "./GildedRoseService";
+import {GildedRose} from "./GildedRoseService";
 import "./GildedRoseExercise.scss";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import GildedRoseOutput from "./GildedRoseOutput";
 import Rose from "../../../structure/ascii-art/Rose";
+import {Item} from "./Item";
 
 const GildedRoseExercise: FC = () => {
     const gildedRoseItems = new GildedRose([
@@ -13,7 +14,7 @@ const GildedRoseExercise: FC = () => {
         new Item("Backstage passes to a TAFKAL80ETC concert", 11, 1),
         new Item("Conjured", 1, 2)
     ]);
-    const output = gildedRoseItems.updateQuality();
+    const output = gildedRoseItems.updateQuality2();
 
     return (
       <>
@@ -67,8 +68,8 @@ const GildedRoseExercise: FC = () => {
               <h3 className="gilded-rose-exercise__sub-title">Output:</h3>
               <p className="gilded-rose-exercise__results">
                   <p>{output.map(it => {
-                      if (!it) return <TypingCaret/>
-                      else return <GildedRoseOutput item={it}/>
+                      if (!it) return <TypingCaret/>;
+                      else return <GildedRoseOutput item={it}/>;
                   })}</p>
               </p>
               <TypingCaret/>

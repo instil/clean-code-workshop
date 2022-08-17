@@ -5,6 +5,6 @@ export class Rental {
     }
 
     getPrice() {
-        return this.daysRented * this.movie.priceCode
+        return this.daysRented * this.movie.priceCode;
     }
 }
