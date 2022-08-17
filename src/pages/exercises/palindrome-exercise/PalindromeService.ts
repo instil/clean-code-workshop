@@ -10,10 +10,30 @@ const data = [
 ];
 
 export const solution = () => {
-    let output = ""
+    let output = "";
+    let flagForPalindrome = true;
     for(let str of data) {
-        output += `"${str}" might be a palindrome\n`;
+        flagForPalindrome = isPalindrome(str);
+        if (flagForPalindrome){
+            output += `"${str}" might be a palindrome\n`;
+        }
     }
     return output;
+};
+
+export const isPalindrome = (text: string): boolean => {
+    text = text.toLowerCase();
+    text.replaceAll(" ","");
+    text.replaceAll(/[^a-zA-Z ]/g, "");
+    let reverseText = "";
+    let arrayText = text.split("");
+    arrayText.reverse();
+    reverseText = arrayText.toString();
+    // eslint-disable-next-line eqeqeq
+    if (reverseText == text){
+        return true;
+    }else {
+        return false;
+    }
 };
 
