@@ -4,15 +4,19 @@ import Navbar from "../../../structure/navbar/Navbar";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import "./UniqueWordsExercise.scss";
 
+
 const UniqueWordsExercise: FC = () => {
     const [input, setInput] = useState(dickens);
     const [output, setOutput] = useState("");
 
     function execute() {
         const unique = require('unique-words');
-        let obj = unique.counts(input);
-        const myJSON = JSON.stringify(obj);
-        setOutput(myJSON);
+        let elements: string[] = unique(input);
+        let formattedAns: string = `Total Unique Words: ${String(elements.length)}`;
+        elements.forEach(element => {
+            formattedAns += ` ${element}`
+        })
+        setOutput(formattedAns);
     }
 
     return (
@@ -32,7 +36,7 @@ const UniqueWordsExercise: FC = () => {
                 <button className="process-button" onClick={execute}>Process</button>
                 <h3 className="unique-words-exercise__sub-title">Output:</h3>
                 <p className="unique-words-exercise__results">
-                    <p>{output}</p>
+                    {output}
                     {/*
                     <p>{output.map(it => {
                         if (!it) return <TypingCaret/>
