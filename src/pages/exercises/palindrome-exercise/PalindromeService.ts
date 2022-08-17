@@ -9,11 +9,26 @@ const data = [
     "Gnorts, Mr Alien"
 ];
 
-export const solution = () => {
+export const palindromeChecker = () => {
     let output = ""
-    for(let str of data) {
-        output += `"${str}" might be a palindrome\n`;
+    for (let sentence of data) {
+
+        const strippedLowerSentence = stripAllExceptAlphabet(sentence).toLowerCase();
+
+        if ((reverseString(strippedLowerSentence)) === strippedLowerSentence) {
+            output += `"${sentence}" is a palindrome.\n`;
+        }
+        else {
+            output += `"${sentence}" is not a palindrome.\n`;
+        }
     }
     return output;
 };
 
+function reverseString(sentence: string): string {
+    return sentence.split("").reverse().join("");
+}
+
+function stripAllExceptAlphabet(sentence: string): string {
+    return sentence.replace(/[^a-z]/gi, '');
+}
