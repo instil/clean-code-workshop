@@ -11,9 +11,27 @@ const data = [
 
 export const solution = () => {
     let output = ""
-    for(let str of data) {
-        output += `"${str}" might be a palindrome\n`;
+    for (let str of data) {
+        output += isPalindrome(str);
     }
     return output;
 };
+
+function removeNonAlphanumericalCharacters(str: string): string {
+    const regex = /[^A-Za-z0-9]/g;
+    return str.replace(regex, "").toLowerCase();
+}
+
+function isPalindrome(str: string): string {
+    const strippedString = removeNonAlphanumericalCharacters(str);
+    const reverse = reverseString(strippedString);
+    if (strippedString === reverse)
+        return `${str} is a palindrome.\n`
+    else
+        return `${str} is not a palindrome.\n`
+}
+
+function reverseString(str: string): string {
+    return str.split("").reverse().join("")
+}
 

@@ -58,6 +58,18 @@
     margin-top: 70px;
   }
 
+  &__description {
+    .leeroy-Jenkins {
+      cursor: pointer;
+    }
+    .leeroy-Jenkins {
+      cursor: pointer;
+    }
+    .leeroy-Jenkins:hover {
+      color: #ade8a2;
+    }
+  }
+
   &__results, &__description {
     font: 25px Inconsolata, monospace;
     padding: 0;

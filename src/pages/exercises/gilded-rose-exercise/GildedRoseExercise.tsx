@@ -25,7 +25,7 @@ const GildedRoseExercise: FC = () => {
                   <p className="gilded-rose-exercise__description">
                       Hi and welcome to team Gilded Rose. <br/>
                       As you know, we are a small inn with a prime location in a prominent city ran by a friendly innkeeper named Allison. <br/>We also buy and sell only the finest goods. <br/>Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us.
-                      <br/>It was developed by a no-nonsense type named Leeroy, who has moved on to new adventures.
+                      <br/>It was developed by a no-nonsense type named <span className="leeroy-Jenkins" onClick={() => window.open("https://www.youtube.com/watch?v=yOMj7WttkOA")}>Leeroy</span>, who has moved on to new adventures.
                       <br/>Your task is to add the new feature to our system so that we can begin selling a new category of items.
                       <br/>First an introduction to our system:
                       <br/>

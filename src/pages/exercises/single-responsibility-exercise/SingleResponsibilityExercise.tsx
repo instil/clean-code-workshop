@@ -2,6 +2,7 @@ import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
 import "./SingleResponsibilityExercise.scss";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
+import {Movie} from "./Movie";
 
 const commando = require("../../../assets/commando.png");
 const conan = require("../../../assets/conan-the-barbarian.png");
@@ -11,15 +12,6 @@ const terminator2 = require("../../../assets/terminator2.png");
 const totalRecall = require("../../../assets/total-recall.png");
 
 const SingleResponsibilityExercise: FC = () => {
-    class Movie {
-        constructor(
-            public readonly title: string,
-            public readonly rating: string,
-            public readonly releaseDate: Date,
-            public readonly quotes: string[]
-        ) {
-        }
-    }
 
     let [q1, q2, q3, q4, q5, q6, q7, q8] = ['', '', '', '', '', '', '', ''];
 
@@ -66,11 +58,42 @@ const SingleResponsibilityExercise: FC = () => {
     }
 
     const data = buildData();
-    let listOfMovieTitles = "";
-    for (let i = 0; i < data.length; i++) {
-        listOfMovieTitles += data[i].title + " ";
+    q1 = data
+        .map(movie => movie.title)
+        .join(" ");
+
+    q2 = data
+        .filter(movie => (movie.rating === "GREAT"))
+        .map(movie => movie.title)
+        .join(" ")
+
+    q3 = data
+        .filter(movie => (movie.releaseDate.getFullYear() === 1984))
+        .map(movie => `${movie.title} ${movie.rating}`)
+        .join(" ");
+
+
+
+    let allQuotes = data.flatMap(movie => movie.quotes);
+    let numberOfQuotes = allQuotes.length;
+
+
+    q4 = allQuotes.join(" ");
+
+    q5 = ((allQuotes.join(" ").trim().length/numberOfQuotes).toFixed(2)).toString()
+
+    function getMoviesFromADecade(startYear: number, endYear: number) {
+        return data
+            .filter(movie => (movie.releaseDate
+                .getFullYear() > startYear && movie.releaseDate
+                .getFullYear() < endYear)).map(movie => movie.title)
+                .join(" ");
     }
-    q1 = listOfMovieTitles;
+
+    q6 = getMoviesFromADecade(1979, 1990);
+
+    q7 = getMoviesFromADecade(1989, 2000);
+
     return (
         <>
             <Navbar pageTitle="Single Responsibility Exercise"/>

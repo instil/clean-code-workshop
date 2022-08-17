@@ -18,53 +18,77 @@ export class GildedRose {
     }
 
     updateQuality() {
-        for (let i = 0; i < this.items.length; i++) {
-            if (this.items[i].name !== 'Aged Brie' && this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
-                if (this.items[i].quality > 0) {
-                    if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-                        this.items[i].quality = this.items[i].quality - 1
-                    }
-                }
-            } else {
-                if (this.items[i].quality < 50) {
-                    this.items[i].quality = this.items[i].quality + 1
-                    if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].sellIn < 11) {
-                            if (this.items[i].quality < 50) {
-                                this.items[i].quality = this.items[i].quality + 1
-                            }
-                        }
-                        if (this.items[i].sellIn < 6) {
-                            if (this.items[i].quality < 50) {
-                                this.items[i].quality = this.items[i].quality + 1
-                            }
-                        }
-                    }
-                }
-            }
-            if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-                this.items[i].sellIn = this.items[i].sellIn - 1;
-            }
-            if (this.items[i].sellIn < 0) {
-                if (this.items[i].name !== 'Aged Brie') {
-                    if (this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].quality > 0) {
-                            if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-                                this.items[i].quality = this.items[i].quality - 1
-                            }
-                        }
-                    } else {
-                        this.items[i].quality = this.items[i].quality - this.items[i].quality
+        for (let item of this.items) {
+            this.isNotBrieOrBackstagePass(item);
+            this.isNotSulfuras(item);
+            this.isSellInLessThanZero(item);
+        }
+
+        return this.items;
+    }
+
+    private isSellInLessThanZero(item: Item) {
+        if (this.isSellInLessThan(item.sellIn, 0)) {
+            if (this.isBrie(item.name)) {
+                if (this.isBackstagePass(item.name)) {
+                    if (this.isQualityGreaterThanZero(item.quality)) {
+                        this.isNotSulfuras(item);
                     }
                 } else {
-                    if (this.items[i].quality < 50) {
-                        this.items[i].quality = this.items[i].quality + 1
+                    item.quality = 0
+                }
+            } else {
+                if (this.isQualityLessThan(item.quality, 50)) {
+                    item.quality += 1
+                }
+            }
+        }
+    }
+
+    private isNotBrieOrBackstagePass(item: Item) {
+        if (this.isBrie(item.name) && this.isBackstagePass(item.name)) {
+            if (this.isQualityGreaterThanZero(item.quality)) {
+                this.isNotSulfuras(item)
+            }
+        } else {
+            if (this.isQualityLessThan(item.quality, 50)) {
+                item.quality += 1
+                if (this.isBackstagePass(item.name)) {
+                    if (this.isSellInLessThan(item.sellIn, 11)) {
+                        item.quality += 1
+                    }
+                    if (this.isSellInLessThan(item.sellIn, 6)) {
+                        item.quality += 1
                     }
                 }
             }
         }
+    }
 
-        return this.items;
+    private isNotSulfuras(item: Item): Item{
+        if (item.name !== 'Sulfuras, Hand of Ragnaros')
+            item.sellIn -= 1;
+        return item;
+    }
+
+    private isBrie(name: string): boolean{
+        return(name === 'Aged Brie')
+    }
+
+    private isQualityGreaterThanZero(quality: number): boolean{
+        return (quality > 0);
+    }
+
+    private isBackstagePass(name: string): boolean{
+        return (name === 'Backstage passes to a TAFKAL80ETC concert')
+    }
+
+    private isQualityLessThan(quality: number, checkAgainst: number): boolean{
+        return (quality < checkAgainst);
+    }
+
+    private isSellInLessThan(sellIn: number, checkAgainst: number): boolean{
+        return (sellIn < checkAgainst);
     }
 }
 

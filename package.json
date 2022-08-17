@@ -11,6 +11,8 @@
     "@types/react-redux": "^7.1.23",
     "@types/react-router-dom": "^5.1.6",
     "@reduxjs/toolkit": "1.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
     "lodash": "^4.17.20",
     "react": "^17.x",
     "react-dom": "^17.x",
@@ -20,7 +22,9 @@
     "typescript": "^4.7.4",
     "sass": "^1.43.5",
     "sass-loader": "^12.3.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "eslint": "^8.1.0",
+    "eslint-plugin-import": "^2.25.4"
   },
   "scripts": {
     "start": "react-scripts start",
