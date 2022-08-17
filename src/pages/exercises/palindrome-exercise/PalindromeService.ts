@@ -12,8 +12,28 @@ const data = [
 export const solution = () => {
     let output = ""
     for(let str of data) {
-        output += `"${str}" might be a palindrome\n`;
+        output += (str + ": " + (contructOutput(isPalindrome(str))));
+        output += '\n'
     }
     return output;
 };
+
+function switchWordOrder(sentence: string): string {
+    let reversedSentence = stripSpaces(sentence);
+    return reversedSentence.split("").reverse().join("")
+}
+
+function isPalindrome(sentence: string): boolean {
+    let reversedSentence = switchWordOrder(sentence);
+    sentence = stripSpaces(sentence);
+    return (sentence === reversedSentence ? true : false);
+}
+
+function stripSpaces(sentence: string): string{
+    return sentence.replaceAll(/[\W_]/g, "").toLowerCase();
+}
+
+function contructOutput(isPalindrome: boolean): string {
+    return (isPalindrome ? " is a palindrome" : " is not a palindrome")
+}
 
