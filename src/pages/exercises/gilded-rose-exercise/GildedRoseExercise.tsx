@@ -14,7 +14,7 @@ const GildedRoseExercise: FC = () => {
         new Item("Backstage passes to a TAFKAL80ETC concert", 11, 1),
         new Item("Conjured", 1, 2)
     ]);
-    const output = gildedRoseItems.updateQuality2();
+    const output = gildedRoseItems.updateQuality();
 
     return (
       <>
