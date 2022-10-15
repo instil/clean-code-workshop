@@ -1,4 +1,4 @@
-const data = [
+const sentences = [
     "A man, a plan, a canal, Panama",
     "Gold is where you find it",
     "If I had a hi-fi",
@@ -11,9 +11,23 @@ const data = [
 
 export const solution = () => {
     let output = ""
-    for(let str of data) {
-        output += `"${str}" might be a palindrome\n`;
-    }
+    sentences.forEach(sentence => {
+        output += appendPalindromeResult(sentence);
+    });
     return output;
 };
+
+const appendPalindromeResult = (sentence: string) => {
+    return `"${sentence}" ${isPalindrome(sentence) ? `is` : `is not`} a palindrome\n`;
+}
+
+const isPalindrome = (input: string) => {
+    input = input.toLowerCase();
+    input = removeNonAlphabeticCharacters(input);
+    return input === input.split('').reverse().join('');
+}
+
+const removeNonAlphabeticCharacters = (input: string): string => {
+    return input.replace(/[^a-z]/g, '');
+}
 

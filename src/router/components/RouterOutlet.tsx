@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {Route, Switch} from "react-router-dom";
-import SingleResponsibilityExercise from "../../pages/exercises/single-responsibility-exercise/SingleResponsibilityExercise";
+import SingleResponsibilityExercise from "../../pages/exercises/single-responsibility-exercise/component/SingleResponsibilityExercise";
 import Menu from "../../pages/menu/Menu";
 import {
     PALINDROME_EXERCISE,
@@ -11,9 +11,9 @@ import {
 } from "../models/Routes";
 import NotFound from "../../pages/not-found/NotFound";
 import PalindromeExercise from "../../pages/exercises/palindrome-exercise/PalindromeExercise";
-import GildedRoseExercise from "../../pages/exercises/gilded-rose-exercise/GildedRoseExercise";
+import GildedRoseExercise from "../../pages/exercises/gilded-rose-exercise/component/GildedRoseExercise";
 import UniqueWordsExercise from "../../pages/exercises/unique-words-exercise/UniqueWordsExercise";
-import RefactoringExercise from "../../pages/exercises/refactoring-exercise/RefactoringExercise";
+import RefactoringExercise from "../../pages/exercises/refactoring-exercise/component/RefactoringExercise";
 import LinterExercise from "../../pages/exercises/linter-exercise/LinterExercise";
 
 const RouterOutlet: FC = () => {
