@@ -27,6 +27,6 @@ const InstilLogo: FC = () => {
         </pre>
 
     );
-}
+};
 
 export default InstilLogo;

@@ -3,12 +3,33 @@ import {dickens} from "./Dickens";
 import Navbar from "../../../structure/navbar/Navbar";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import "./UniqueWordsExercise.scss";
+import {countBy, groupBy, orderBy, sortBy, update, words} from "lodash";
+
+interface WordCount {
+    word: string,
+    count: number
+}
 
 const UniqueWordsExercise: FC = () => {
     const [input, setInput] = useState(dickens);
     const [output, setOutput] = useState([""]);
 
     function execute() {
+        const allWords = input
+            .toLowerCase()
+            .replaceAll(/[\W_]/g, " ")
+            .split(" ");
+
+        const groupedWords = groupBy(allWords);
+
+        const mappedWords = Object.entries(groupedWords)
+            .map(([word, words]) => [word, words.length] as unknown as WordCount);
+
+        const sortedWords = orderBy(mappedWords, "count", "asc")
+            .map(wordCount => `${wordCount.word}: ${wordCount.count}`);
+
+        setOutput(sortedWords);
+
         // TODO: Solutions goes here
         //       Process 'input' string and write result to 'output' string
 
@@ -30,8 +51,6 @@ const UniqueWordsExercise: FC = () => {
         // the = 1
         // `
         // Note, sorted by occurrence
-
-        setOutput(["The result goes here"])
     }
 
     return (
@@ -52,13 +71,13 @@ const UniqueWordsExercise: FC = () => {
                 <h3 className="unique-words-exercise__sub-title">Output:</h3>
                 <p className="unique-words-exercise__results">
                     <p>{output.map(it => {
-                        if (!it) return <TypingCaret/>
-                        else return <p key={it}>{it}</p>
+                        if (!it) return <TypingCaret/>;
+                        else return <p key={it}>{it}</p>;
                     })}</p>
                 </p>
             </div>
         </>
     );
-}
+};
 
 export default UniqueWordsExercise;

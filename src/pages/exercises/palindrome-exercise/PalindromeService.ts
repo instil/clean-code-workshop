@@ -10,10 +10,14 @@ const data = [
 ];
 
 export const solution = () => {
-    let output = ""
-    for(let str of data) {
-        output += `"${str}" might be a palindrome\n`;
-    }
-    return output;
+    return data.map(inputStatement => [inputStatement, isPalindrome(inputStatement)])
+        .map(([inputStatement, isPalindrome]) => `"${inputStatement}" ${isPalindrome ? "is" : "is not"} a palindrome\n`);
 };
 
+function isPalindrome(inputStatement: string): boolean {
+    return sanitise(inputStatement) === sanitise(inputStatement.split("").reverse().join(""));
+}
+
+function sanitise(inputStatement: string): string {
+    return inputStatement.toLowerCase().replaceAll(/[\W_]/g, "");
+}

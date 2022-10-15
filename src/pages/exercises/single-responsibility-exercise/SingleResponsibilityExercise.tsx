@@ -2,6 +2,9 @@ import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
 import "./SingleResponsibilityExercise.scss";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
+import {buildMovies} from "./Data";
+import {groupBy, meanBy} from "lodash";
+import {Movie} from "./Movie";
 
 const commando = require("../../../assets/commando.png");
 const conan = require("../../../assets/conan-the-barbarian.png");
@@ -11,66 +14,48 @@ const terminator2 = require("../../../assets/terminator2.png");
 const totalRecall = require("../../../assets/total-recall.png");
 
 const SingleResponsibilityExercise: FC = () => {
-    class Movie {
-        constructor(
-            public readonly title: string,
-            public readonly rating: string,
-            public readonly releaseDate: Date,
-            public readonly quotes: string[]
-        ) {
-        }
+    const movies = buildMovies();
+
+    function toPrintStatement(input: string[]) {
+        return input.join(" ");
     }
 
-    let [q1, q2, q3, q4, q5, q6, q7, q8] = ['', '', '', '', '', '', '', ''];
-
-    function buildData() {
-        const movies = [
-            new Movie("Conan", "GREAT",
-                new Date(1984, 6, 29),
-                ["Enough talk!"]),
-            new Movie("Terminator",
-                "GREAT",
-                new Date(1984, 10, 26),
-                ["I'll be back."]),
-            new Movie("Terminator 2",
-                "BRILLIANT",
-                new Date(1991, 7, 3),
-                ["Come with me if you want to live.",
-                    "Hasta la vista, baby.",
-                    "It's in your nature to destroy yourselves."]),
-            new Movie("Commando",
-                "SUPERB",
-                new Date(1984, 10, 4),
-                ["I have to remind you Sully, this is my weak arm!",
-                    "I eat Green Berets for breakfast. And right now, I'm very hungry!",
-                    "Don't disturb my friend, he's dead tired.",
-                    "Come on Bennett, let's party!",
-                    "Let off some steam, Bennett."]),
-            new Movie("Predator",
-                "LIFE_CHANGING",
-                new Date(1987, 6, 12),
-                ["Get to the Chopper!",
-                    "Stick around.",
-                    "If it bleeds, we can kill it.",
-                    "He's using the trees.",
-                    "We move, five meter spread, no sound."]),
-            new Movie("Total Recall",
-                "GREAT",
-                new Date(1990, 6, 1),
-                ["Get your ass to Mars.",
-                    "Relax. You'll live longer.",
-                    "If I am not me, then who the hell am I?",
-                    "Look who's talking."])
-        ];
-        return movies;
+    function getAllMovieTitles(): string[] {
+        return movies.map(movie => movie.title);
     }
 
-    const data = buildData();
-    let listOfMovieTitles = "";
-    for (let i = 0; i < data.length; i++) {
-        listOfMovieTitles += data[i].title + " ";
+    function getAllGreatMovieNames(): string[] {
+        return movies
+            .filter(movie => movie.rating === "GREAT")
+            .map(movie => movie.title);
     }
-    q1 = listOfMovieTitles;
+
+    function getTitleAndRatingOfMoviesFrom1984(): string[] {
+        return movies
+            .filter(movie => movie.releaseDate.getFullYear() === 1984)
+            .map(movie => `${movie.title}\t${movie.rating}`);
+    }
+
+    function getAllQuotes(): string[] {
+        return movies.flatMap(movie => `"${movie.quotes}"\t`);
+    }
+
+    function getAverageQuoteLength() : string {
+        return meanBy(movies.flatMap(movie => movie.quotes), movie => movie.length).toFixed(2);
+    }
+
+    function getMoviesFromDecade(decade: number): string[] {
+        return movies
+            .filter(movie => movie.releaseDate.getFullYear().toString().split("")[2] === decade.toString().split("")[2])
+            .map(movie => movie.title);
+    }
+
+    function getMoviesGroupedByRating(): string {
+        return Object.entries(groupBy(movies, movie => movie.rating))
+            .map(([rating, ms]) => `${rating}: ${ms.map(movie => movie.title).join(",\t")}`)
+            .join("\n");
+    }
+
     return (
         <>
             <Navbar pageTitle="Single Responsibility Exercise"/>
@@ -94,21 +79,21 @@ const SingleResponsibilityExercise: FC = () => {
                 </div>
                 <h3 className="single-responsibility-exercise__sub-title">Your Answers:</h3>
                 <ol className="single-responsibility-exercise__results">
-                    <li>All the titles: <span>{q1}</span></li>
-                    <li>All the great movie titles: <span>{q2}</span></li>
-                    <li>Title and rating of movies from 1984: <span>{q3}</span></li>
-                    <li>All the quotes: <span>{q4}</span></li>
+                    <li>All the titles: <span>{toPrintStatement(getAllMovieTitles())}</span></li>
+                    <li>All the great movie titles: <span>{toPrintStatement(getAllGreatMovieNames())}</span></li>
+                    <li>Title and rating of movies from 1984: <span>{toPrintStatement(getTitleAndRatingOfMoviesFrom1984())}</span></li>
+                    <li>All the quotes: <span>{toPrintStatement(getAllQuotes())}</span></li>
                     {/*for finding the average quote utilise the meanBy function from lodash*/}
-                    <li>Average quote length: <span>{q5}</span></li>
-                    <li>Movies from the 1980s: <span>{q6}</span></li>
-                    <li>Movies from the 1990s: <span>{q7}</span></li>
+                    <li>Average quote length: <span>{getAverageQuoteLength()}</span></li>
+                    <li>Movies from the 1980s: <span>{toPrintStatement(getMoviesFromDecade(1980))}</span></li>
+                    <li>Movies from the 1990s: <span>{toPrintStatement(getMoviesFromDecade(1990))}</span></li>
                     {/*for grouping movies by rating utilise the groupBy function from lodash*/}
-                    <li>Movies grouped by rating: <pre>{q8}</pre></li>
+                    <li>Movies grouped by rating: <pre>{getMoviesGroupedByRating()}</pre></li>
                 </ol>
                 <TypingCaret/>
             </div>
         </>
-    )
+    );
 };
 
 export default SingleResponsibilityExercise;
