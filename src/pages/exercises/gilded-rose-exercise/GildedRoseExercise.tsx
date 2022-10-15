@@ -1,14 +1,15 @@
 import {FC} from "react";
 import Navbar from "../../../structure/navbar/Navbar";
-import {GildedRose, Item} from "./GildedRoseService";
+import {GildedRose} from "./GildedRoseService";
 import "./GildedRoseExercise.scss";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import GildedRoseOutput from "./GildedRoseOutput";
 import Rose from "../../../structure/ascii-art/Rose";
+import {Item} from "./Item";
 
 const GildedRoseExercise: FC = () => {
     const gildedRoseItems = new GildedRose([
-        new Item("Aged Brie", 1, 1),
+		new Item("Aged Brie", 1, 1),
         new Item("Sulfuras, Hand of Ragnaros", 1, 1),
         new Item("Backstage passes to a TAFKAL80ETC concert", 11, 1),
         new Item("Conjured", 1, 2)
