@@ -3,6 +3,6 @@ import "./TypingCaret.scss";
 
 const TypingCaret: FC = () => {
     return <div className="typing-caret"/>;
-}
+};
 
 export default TypingCaret;

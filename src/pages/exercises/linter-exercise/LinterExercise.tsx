@@ -49,6 +49,6 @@ const LinterExercise: FC = () => {
             </div>
         </>
     );
-}
+};
 
 export default LinterExercise;

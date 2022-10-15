@@ -31,7 +31,7 @@ const UniqueWordsExercise: FC = () => {
         // `
         // Note, sorted by occurrence
 
-        setOutput(["The result goes here"])
+        setOutput(["The result goes here"]);
     }
 
     return (
@@ -52,13 +52,13 @@ const UniqueWordsExercise: FC = () => {
                 <h3 className="unique-words-exercise__sub-title">Output:</h3>
                 <p className="unique-words-exercise__results">
                     <p>{output.map(it => {
-                        if (!it) return <TypingCaret/>
-                        else return <p key={it}>{it}</p>
+                        if (!it) return <TypingCaret/>;
+                        else return <p key={it}>{it}</p>;
                     })}</p>
                 </p>
             </div>
         </>
     );
-}
+};
 
 export default UniqueWordsExercise;

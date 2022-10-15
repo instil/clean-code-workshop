@@ -11,6 +11,6 @@ const PalindromeIcon: FC = () => {
             <p>  /_/ |_/_/  |_\____/_____/\____/_/  |_/_/ |_|  </p>
         </pre>
     );
-}
+};
 
 export default PalindromeIcon;

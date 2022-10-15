@@ -16,8 +16,8 @@ import Footer from "../../structure/footer/Footer";
 const Menu: FC = () => {
     const history = useHistory();
     const goToUrl = (url: string): void => {
-        history.push(url)
-    }
+        history.push(url);
+    };
 
     return (
         <div className="menu">
@@ -34,7 +34,7 @@ const Menu: FC = () => {
             <InstilLogo/>
             <Footer/>
         </div>
-    )
-}
+    );
+};
 
 export default Menu;

@@ -14,6 +14,6 @@ const GildedRoseOutput: FC<Props> = ({item}) => {
             <hr/>
         </>
     );
-}
+};
 
 export default GildedRoseOutput;

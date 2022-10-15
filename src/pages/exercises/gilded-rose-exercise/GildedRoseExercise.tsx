@@ -67,8 +67,8 @@ const GildedRoseExercise: FC = () => {
               <h3 className="gilded-rose-exercise__sub-title">Output:</h3>
               <p className="gilded-rose-exercise__results">
                   <p>{output.map(it => {
-                      if (!it) return <TypingCaret/>
-                      else return <GildedRoseOutput item={it}/>
+                      if (!it) return <TypingCaret/>;
+                      else return <GildedRoseOutput item={it}/>;
                   })}</p>
               </p>
               <TypingCaret/>
