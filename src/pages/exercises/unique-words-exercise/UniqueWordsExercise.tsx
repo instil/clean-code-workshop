@@ -4,13 +4,35 @@ import Navbar from "../../../structure/navbar/Navbar";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import "./UniqueWordsExercise.scss";
 
+export function uniqueWords(text: string): Map<string, number> {
+    let wordMap = new Map<string, number>();
+
+    let wordArray = text.split(" ");
+    for (const word of wordArray) {
+        if (wordMap.has(word)) {
+            const wordCount = wordMap.get(word);
+            wordMap.set(word, wordCount!+1);
+        } else {
+            wordMap.set(word, 1);
+        }
+    }
+
+    return wordMap;
+}
+
+
+
 const UniqueWordsExercise: FC = () => {
     const [input, setInput] = useState(dickens);
     const [output, setOutput] = useState([""]);
 
     function execute() {
-        // TODO: Solutions goes here
-        //       Process 'input' string and write result to 'output' string
+        let uniqueWordsMap = uniqueWords(input);
+        let outputString = "";
+        for (let key in uniqueWordsMap.keys()) {
+            outputString += `${key}: ${uniqueWordsMap.get(key)}`
+            console.log(key + ": " + uniqueWordsMap.get(key));
+        }
 
         // Examples
         // "The the the a a" would produce
@@ -31,7 +53,7 @@ const UniqueWordsExercise: FC = () => {
         // `
         // Note, sorted by occurrence
 
-        setOutput(["The result goes here"])
+        setOutput([])
     }
 
     return (
