@@ -1,3 +1,5 @@
+import {remove} from "lodash";
+
 const data = [
     "A man, a plan, a canal, Panama",
     "Gold is where you find it",
@@ -9,10 +11,34 @@ const data = [
     "Gnorts, Mr Alien"
 ];
 
+export const isPalindrome = (text: string): boolean => {
+    const lowerCaseText = text.toLowerCase();
+    const onlyLettersText = removeAllNonLetterCharacters(lowerCaseText);
+    const reversedText = returnReversedString(onlyLettersText);
+
+    return reversedText === onlyLettersText;
+}
+
+const returnReversedString = (string: string) => {
+    let reversedString = "";
+    for (let index = string.length-1; index>=0; index--) {
+        reversedString += string[index];
+    }
+    return reversedString;
+}
+
+const removeAllNonLetterCharacters = (string: string) => {
+    return string.replace(/[^a-zA-Z]/g, '');
+}
+
 export const solution = () => {
     let output = ""
     for(let str of data) {
-        output += `"${str}" might be a palindrome\n`;
+        if (isPalindrome(str)) {
+            output += `"${str}" is a palindrome\n`;
+        } else {
+            output += `"${str}" is not a palindrome\n`;
+        }
     }
     return output;
 };

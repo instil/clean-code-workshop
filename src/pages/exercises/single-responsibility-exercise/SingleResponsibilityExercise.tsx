@@ -10,67 +10,129 @@ const terminator1 = require("../../../assets/terminator1.png");
 const terminator2 = require("../../../assets/terminator2.png");
 const totalRecall = require("../../../assets/total-recall.png");
 
-const SingleResponsibilityExercise: FC = () => {
-    class Movie {
-        constructor(
-            public readonly title: string,
-            public readonly rating: string,
-            public readonly releaseDate: Date,
-            public readonly quotes: string[]
-        ) {
+export class Movie {
+    constructor(
+        public readonly title: string,
+        public readonly rating: string,
+        public readonly releaseDate: Date,
+        public readonly quotes: string[]
+    ) {
+    }
+}
+
+function buildData() {
+    const movies = [
+        new Movie("Conan", "GREAT",
+            new Date(1984, 6, 29),
+            ["Enough talk!"]),
+        new Movie("Terminator",
+            "GREAT",
+            new Date(1984, 10, 26),
+            ["I'll be back."]),
+        new Movie("Terminator 2",
+            "BRILLIANT",
+            new Date(1991, 7, 3),
+            ["Come with me if you want to live.",
+                "Hasta la vista, baby.",
+                "It's in your nature to destroy yourselves."]),
+        new Movie("Commando",
+            "SUPERB",
+            new Date(1984, 10, 4),
+            ["I have to remind you Sully, this is my weak arm!",
+                "I eat Green Berets for breakfast. And right now, I'm very hungry!",
+                "Don't disturb my friend, he's dead tired.",
+                "Come on Bennett, let's party!",
+                "Let off some steam, Bennett."]),
+        new Movie("Predator",
+            "LIFE_CHANGING",
+            new Date(1987, 6, 12),
+            ["Get to the Chopper!",
+                "Stick around.",
+                "If it bleeds, we can kill it.",
+                "He's using the trees.",
+                "We move, five meter spread, no sound."]),
+        new Movie("Total Recall",
+            "GREAT",
+            new Date(1990, 6, 1),
+            ["Get your ass to Mars.",
+                "Relax. You'll live longer.",
+                "If I am not me, then who the hell am I?",
+                "Look who's talking."])
+    ];
+    return movies;
+}
+
+export const data = buildData();
+
+export function listOfMovieTitles(data: Movie[]): string {
+    let listOfMovieTitles = "";
+    data.forEach(movie => listOfMovieTitles += movie.title + " ")
+    return listOfMovieTitles;
+}
+
+export function listOfMovieTitlesByRating(data: Movie[], rating: string): string {
+    let listOfMovieTitles = "";
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].rating === rating) {
+            listOfMovieTitles += data[i].title + " ";
         }
     }
+    return listOfMovieTitles;
+}
+
+export function listOfMovieTitlesAndRatingByYear(data: Movie[], year: number): string {
+    let listOfMovieTitles = "";
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].releaseDate.getFullYear() === year) {
+            listOfMovieTitles += data[i].title + ":" + data[i].rating + " ";
+        }
+    }
+    return listOfMovieTitles;
+}
+
+export function listOfQuotes(data: Movie[]): string[] {
+    return data.flatMap(movie => movie.quotes);
+}
+
+export function joinListOfQuotes(data: Movie[]): string {
+    return listOfQuotes(data).join(" ");
+}
+
+export function averageQuoteLength(data: Movie[]): string {
+    const allQuotes = listOfQuotes(data);
+    let totalLength: number = 0;
+    allQuotes.forEach(quote => totalLength += quote.length);
+    const averageQuoteLength = totalLength / allQuotes.length;
+    return (Math.round(averageQuoteLength * 100) / 100).toFixed(2).toString();
+}
+
+export function moviesFromDecade(data: Movie[], decade: number): string {
+    let listOfMovies = "";
+    data.forEach(movie => {
+        const year = movie.releaseDate.getFullYear();
+        if (year >= decade && year < decade+10) {
+            listOfMovies += movie.title + " ";
+        }
+    })
+    return listOfMovies;
+}
+
+export function moviesGroupedByRating(data: Movie[]) {
+
+}
+
+const SingleResponsibilityExercise: FC = () => {
 
     let [q1, q2, q3, q4, q5, q6, q7, q8] = ['', '', '', '', '', '', '', ''];
 
-    function buildData() {
-        const movies = [
-            new Movie("Conan", "GREAT",
-                new Date(1984, 6, 29),
-                ["Enough talk!"]),
-            new Movie("Terminator",
-                "GREAT",
-                new Date(1984, 10, 26),
-                ["I'll be back."]),
-            new Movie("Terminator 2",
-                "BRILLIANT",
-                new Date(1991, 7, 3),
-                ["Come with me if you want to live.",
-                    "Hasta la vista, baby.",
-                    "It's in your nature to destroy yourselves."]),
-            new Movie("Commando",
-                "SUPERB",
-                new Date(1984, 10, 4),
-                ["I have to remind you Sully, this is my weak arm!",
-                    "I eat Green Berets for breakfast. And right now, I'm very hungry!",
-                    "Don't disturb my friend, he's dead tired.",
-                    "Come on Bennett, let's party!",
-                    "Let off some steam, Bennett."]),
-            new Movie("Predator",
-                "LIFE_CHANGING",
-                new Date(1987, 6, 12),
-                ["Get to the Chopper!",
-                    "Stick around.",
-                    "If it bleeds, we can kill it.",
-                    "He's using the trees.",
-                    "We move, five meter spread, no sound."]),
-            new Movie("Total Recall",
-                "GREAT",
-                new Date(1990, 6, 1),
-                ["Get your ass to Mars.",
-                    "Relax. You'll live longer.",
-                    "If I am not me, then who the hell am I?",
-                    "Look who's talking."])
-        ];
-        return movies;
-    }
+    q1 = listOfMovieTitles(data);
+    q2 = listOfMovieTitlesByRating(data, "GREAT");
+    q3 = listOfMovieTitlesAndRatingByYear(data, 1984);
+    q4 = joinListOfQuotes(data);
+    q5 = averageQuoteLength(data);
+    q6 = moviesFromDecade(data, 1980);
+    q7 = moviesFromDecade(data, 1990);
 
-    const data = buildData();
-    let listOfMovieTitles = "";
-    for (let i = 0; i < data.length; i++) {
-        listOfMovieTitles += data[i].title + " ";
-    }
-    q1 = listOfMovieTitles;
     return (
         <>
             <Navbar pageTitle="Single Responsibility Exercise"/>
