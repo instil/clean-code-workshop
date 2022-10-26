@@ -4,6 +4,21 @@ import Navbar from "../../../structure/navbar/Navbar";
 import TypingCaret from "../../../structure/typing-caret/TypingCaret";
 import "./UniqueWordsExercise.scss";
 
+export function uniqueWords(text: string): Record<string, number> {
+    return {
+        "h": 1
+    }
+}
+
+//split the string on the comma
+//put everything to lower case
+//save in str variable
+//declare a new array
+//iterate through the string and check if the word already exists in the array
+//if it doesnt exist push the word into the array, increment the word counter to 1
+//next word, iterate through the array, check if it exists in the array, if it exists increment the counter
+
+
 const UniqueWordsExercise: FC = () => {
     const [input, setInput] = useState(dickens);
     const [output, setOutput] = useState([""]);
